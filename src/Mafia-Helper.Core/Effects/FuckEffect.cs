@@ -2,8 +2,6 @@
 {
     public class FuckEffect : ActionEffectBase
     {
-        public FuckEffect() : base(ActionEffectName.Fucked.ToString())
-        {
-        }
+        public override string EffectName => ActionEffectConstants.Fucked;
     }
 }

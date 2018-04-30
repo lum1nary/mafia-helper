@@ -2,8 +2,6 @@
 {
     public class VoteEffect : ActionEffectBase
     {
-        public VoteEffect() : base(ActionEffectName.Voted.ToString())
-        {
-        }
+        public override string EffectName => ActionEffectConstants.Voted;
     }
 }

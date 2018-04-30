@@ -1,11 +1,8 @@
-﻿using MafiaHelper.Core.Effects;
-
-namespace MafiaHelper.Core
+﻿namespace MafiaHelper.Core
 {
-    public class DoctorTeam : MafiaTeamBase
+    public class DoctorTeam : TeamBase
     {
-        public override DefaultTeamName? DefTeamName => DefaultTeamName.Doctor;
-
+        public override string TeamName => TeamNameConstants.Doctor;
         public DoctorTeam() : base(new HealEffect())
         {
         }

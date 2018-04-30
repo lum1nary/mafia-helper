@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace MafiaHelper.Core.Players
+namespace MafiaHelper.Core
 {
     public class PlayerState : IPlayerState
     {
-        private readonly List<IActionEffect> _effects = new List<IActionEffect>();
-        public IReadOnlyList<IActionEffect> Effects => _effects;
-        public void ApplyEffect(IActionEffect effect)
+        private readonly EffectCollection _effects = new EffectCollection();
+        public bool IsCanChoose => _effects.Any(e => e.IsBlocking);
+        public bool IsCanVote => !_effects.ContainsEffect(ActionEffectConstants.VoteBan);
+        public EffectCollection Effects => _effects;
+        public void Apply(IActionEffect effect)
         {
             if(effect == null)
                 throw new ArgumentNullException();

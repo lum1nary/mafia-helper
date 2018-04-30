@@ -6,14 +6,14 @@ namespace MafiaHelper.Core
     {
         IReadOnlyList<IMafiaPlayer> Players { get; }
 
-        IReadOnlyList<IMafiaTeam> Teams { get; }
+        IReadOnlyList<ITeam> Teams { get; }
 
-        IReadOnlyList<IMafiaRound> Rounds { get; }
+        IReadOnlyList<IRound> Rounds { get; }
 
         IMafiaRules Rules { get; }
 
         void Initialize();
 
-        IMafiaRoundResult PlayNextRound(IMafiaRound round);
+        IRoundResult PlayNextRound(IRound round);
     }
 }

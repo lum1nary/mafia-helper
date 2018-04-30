@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafia-Helper.Core", "Mafia-Helper.Core\Mafia-Helper.Core.csproj", "{EB7823E5-DCA8-4F0E-822D-345E626E9CD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mafia-Helper.Console", "Mafia-Helper.Console\Mafia-Helper.Console.csproj", "{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafia-Helper.Console", "Mafia-Helper.Console\Mafia-Helper.Console.csproj", "{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{ECC664BE-A5D3-4C99-8BA0-34FC4F9166D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mafia-Helper.Core", "Mafia-Helper.Core\Mafia-Helper.Core.csproj", "{F62F9711-D425-4893-8F79-7754DF4948FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mafia-Helper.Core.Testing", "Mafia-Helper.Core.Testing\Mafia-Helper.Core.Testing.csproj", "{3E142506-C375-4BD6-A9ED-B7938340414C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafia-Helper.Core.Abstractions", "Mafia-Helper.Core.Abstractions\Mafia-Helper.Core.Abstractions.csproj", "{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +19,28 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EB7823E5-DCA8-4F0E-822D-345E626E9CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB7823E5-DCA8-4F0E-822D-345E626E9CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB7823E5-DCA8-4F0E-822D-345E626E9CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB7823E5-DCA8-4F0E-822D-345E626E9CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E142506-C375-4BD6-A9ED-B7938340414C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E142506-C375-4BD6-A9ED-B7938340414C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E142506-C375-4BD6-A9ED-B7938340414C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E142506-C375-4BD6-A9ED-B7938340414C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E142506-C375-4BD6-A9ED-B7938340414C} = {ECC664BE-A5D3-4C99-8BA0-34FC4F9166D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5195AF86-91D5-49BD-8967-E37B7282EA09}

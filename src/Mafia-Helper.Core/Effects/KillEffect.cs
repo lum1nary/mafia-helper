@@ -1,9 +1,9 @@
-﻿namespace MafiaHelper.Core.Effects
+﻿namespace MafiaHelper.Core
 {
     public class KillEffect : ActionEffectBase
     {
-        public KillEffect() : base(ActionEffectName.Killed.ToString())
-        {
-        }
+        public override string EffectName => ActionEffectConstants.Killed;
+
+        public override bool IsBlocking => true;
     }
 }

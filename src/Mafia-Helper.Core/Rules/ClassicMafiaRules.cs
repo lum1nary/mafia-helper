@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MafiaHelper.Core.ActionEffectResolver;
 
-namespace MafiaHelper.Core.Rules
+namespace MafiaHelper.Core
 {
     public class ClassicMafiaRules : IMafiaRules
     {
@@ -15,60 +16,71 @@ namespace MafiaHelper.Core.Rules
 
         public string RulesType => "Classic";
 
-        public IMafiaRoundResult GetCurrentResult(IMafiaGame game)
+        public IEffectProcessor EffectProcessor { get; } = new KillProcessor();
+
+        public IReadOnlyList<string> DefaultTeams { get; } = new List<string>
         {
-            var noMafia = game.Teams.Where(t => t.DefTeamName == DefaultTeamName.Mafia).All(t => t.Participants.Count == 0);
-            var allMafia = game.Teams.Where(i => i.DefTeamName != DefaultTeamName.Mafia).All(t => t.Participants.Count == 0);
+            TeamNameConstants.Mafia,
+            TeamNameConstants.Doctor,
+            TeamNameConstants.Whore,
+            TeamNameConstants.Civilian
+        };
+
+        public IReadOnlyList<CustomTeamDecription> CustomTeams { get; } = new List<CustomTeamDecription>();
+
+        public IRoundResult GetCurrentResult(IMafiaGame game)
+        {
+            var noMafia = game.Teams.Where(t => t.TeamName == TeamNameConstants.Mafia)
+                .All(t => t.Participants.Count == 0);
+            var allMafia = game.Teams.Where(i => i.TeamName != TeamNameConstants.Mafia)
+                .All(t => t.Participants.Count == 0);
+
+            var lastRound = game.Rounds[game.Rounds.Count - 1];
 
             if (noMafia)
-                return new MafiaRoundResult(true, game.Rounds.Last(), DefaultTeamName.Civilian.ToString());
+                return new MafiaRoundResult(true, lastRound, TeamNameConstants.Civilian);
 
-            if(allMafia)
-                return new MafiaRoundResult(true, game.Rounds.Last(), DefaultTeamName.Mafia.ToString());
+            if (allMafia)
+                return new MafiaRoundResult(true, lastRound, TeamNameConstants.Mafia);
 
-            return new MafiaRoundResult(false, game.Rounds.Last());
+            return new MafiaRoundResult(false, lastRound);
         }
 
         public bool IsPlayerCanContinue(IMafiaGame game, IMafiaPlayer player)
         {
             //1 killed
             //2 voted more than half of playersCount
-            var killed = player.State.Effects.Any(i => i.DefaultEffectName == ActionEffectName.Killed);
-            var votedCount = player.State.Effects.Count(i => i.DefaultEffectName == ActionEffectName.Voted) ;
+            var killed = player.State.Effects.ContainsActualEffect(ActionEffectConstants.Killed);
+            var votedCount = player.State.Effects.CountEffects(ActionEffectConstants.Voted);
 
-            var voted = votedCount > ((game.Players.Count - 1) / 2);
+            var voted = votedCount > (game.Players.Count - 1) / 2;
 
-            return killed || voted;
+            return !killed && !voted;
         }
 
         public void Apply(IMafiaGame game)
         {
             foreach (var team in game.Teams)
             {
-                switch (team.DefTeamName)
+                switch (team.TeamName)
                 {
-                    case DefaultTeamName.Mafia: team.Priority = MafiaPririty;
+                    case TeamNameConstants.Mafia:
+                        team.Priority = MafiaPririty;
                         break;
-                    case DefaultTeamName.Whore: team.Priority = WhorePriority;
+                    case TeamNameConstants.Whore:
+                        team.Priority = WhorePriority;
                         break;
-                    case DefaultTeamName.Doctor: team.Priority = DoctorPriority;
+                    case TeamNameConstants.Doctor:
+                        team.Priority = DoctorPriority;
                         break;
-                    case DefaultTeamName.Civilian: team.Priority = CivilianPriority;
+                    case TeamNameConstants.Civilian:
+                        team.Priority = CivilianPriority;
                         break;
-                    case null: team.Priority = OthersPriority;
+                    default:
+                        team.Priority = OthersPriority;
                         break;
                 }
             }
         }
-
-        public IReadOnlyList<DefaultTeamName> DefaultTeams { get; } = new List<DefaultTeamName>()
-        {
-            DefaultTeamName.Mafia,
-            DefaultTeamName.Doctor,
-            DefaultTeamName.Whore,
-            DefaultTeamName.Civilian
-        };
-
-        public IReadOnlyList<CustomTeamDecription> CustomTeams { get; } = new List<CustomTeamDecription>();
     }
 }

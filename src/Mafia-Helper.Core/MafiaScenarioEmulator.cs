@@ -42,7 +42,7 @@ namespace MafiaHelper.Core
             return new TeamEnumerator(Game.Teams);
         }
 
-        public void AddChoice(IMafiaTeam team, int target)
+        public void AddChoice(ITeam team, int target)
         {
             var choosenPlayer = Game.Players.First(i => i.PlayerNumber == target);
             team.DoChoose(choosenPlayer);
@@ -55,7 +55,7 @@ namespace MafiaHelper.Core
             player.DoVote(choosenPlayer);
         }
 
-        public IMafiaRoundResult ApplyRound(TeamEnumerator enumerator)
+        public IRoundResult ApplyRound(TeamEnumerator enumerator)
         {
             enumerator.Dispose();
             _roundBuilder.Validate();

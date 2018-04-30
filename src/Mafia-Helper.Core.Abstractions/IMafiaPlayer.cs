@@ -1,15 +1,14 @@
 ﻿using System;
-using MafiaHelper.Core.EventArgs;
 
 namespace MafiaHelper.Core
 {
     public interface IMafiaPlayer
     {
-        event EventHandler<PlayerVoteEventArgs> Vote;
+        event EventHandler<IVoteAction> Vote;
 
         int PlayerNumber { get; }
 
-        IMafiaTeam Team { get; }
+        ITeam Team { get; }
 
         IPlayerState State { get; }
 

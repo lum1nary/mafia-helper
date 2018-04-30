@@ -2,8 +2,6 @@
 {
     public class NullEffect : ActionEffectBase
     {
-        public NullEffect() : base(ActionEffectName.None.ToString())
-        {
-        }
+        public override string EffectName => ActionEffectConstants.None;
     }
 }

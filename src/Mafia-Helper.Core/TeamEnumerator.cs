@@ -4,18 +4,18 @@ using System.Linq;
 
 namespace MafiaHelper.Core
 {
-    public class TeamEnumerator : IEnumerable<IMafiaTeam>, IEnumerator<IMafiaTeam>
+    public class TeamEnumerator : IEnumerable<ITeam>, IEnumerator<ITeam>
     {
-        private readonly LinkedList<IMafiaTeam> _prioritizedTeams;
+        private readonly LinkedList<ITeam> _prioritizedTeams;
 
-        private LinkedListNode<IMafiaTeam> _current;
+        private LinkedListNode<ITeam> _current;
 
-        public TeamEnumerator(IEnumerable<IMafiaTeam> teams)
+        public TeamEnumerator(IEnumerable<ITeam> teams)
         {
-            _prioritizedTeams = new LinkedList<IMafiaTeam>(teams.OrderBy(i => i.Priority));
+            _prioritizedTeams = new LinkedList<ITeam>(teams.OrderBy(i => i.Priority));
         }
 
-        public IEnumerator<IMafiaTeam> GetEnumerator()
+        public IEnumerator<ITeam> GetEnumerator()
         {
             return this;
         }
@@ -42,7 +42,7 @@ namespace MafiaHelper.Core
             _current = null;
         }
 
-        public IMafiaTeam Current => _current.Value;
+        public ITeam Current => _current.Value;
 
         object IEnumerator.Current => Current;
 

@@ -2,13 +2,13 @@
 
 namespace MafiaHelper.Core
 {
-    public class MafiaRoundResult : IMafiaRoundResult
+    public class MafiaRoundResult : IRoundResult
     {
         public bool IsGameComplete { get; }
         public string WinTeamName { get; }
-        public IMafiaRound CompletedRound { get; }
+        public IRound CompletedRound { get; }
 
-        public MafiaRoundResult(bool isGameComplete, IMafiaRound completedRound, string winTeamName = "")
+        public MafiaRoundResult(bool isGameComplete, IRound completedRound, string winTeamName = "")
         {
             IsGameComplete = isGameComplete;
             CompletedRound = completedRound;
@@ -17,8 +17,9 @@ namespace MafiaHelper.Core
 
         public override string ToString()
         {
-            return $"Round {CompletedRound.RoundNumber} completed with following actions :" + 
-                   string.Join("\n", CompletedRound.Actions.Select(i => i.ToString()));
+            return $"Round {CompletedRound.RoundNumber} completed! " +
+                   $"Round actions:\n" + string.Join("\n", CompletedRound.Actions.Select(i => i.ToString())) + "\n" +
+                   $"Round Votes:\n" + string.Join("\n", CompletedRound.Votes.Select(i => i.ToString()));
         }
     }
 }

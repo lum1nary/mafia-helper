@@ -1,13 +1,11 @@
-﻿using MafiaHelper.Core.Effects;
-
-namespace MafiaHelper.Core
+﻿namespace MafiaHelper.Core
 {
-    public class MafiaTeam : MafiaTeamBase
+    public class MafiaTeam : TeamBase
     {
-        public override DefaultTeamName? DefTeamName => DefaultTeamName.Mafia;
-
         public MafiaTeam() : base(new KillEffect())
         {
         }
+
+        public override string TeamName => TeamNameConstants.Mafia;
     }
 }

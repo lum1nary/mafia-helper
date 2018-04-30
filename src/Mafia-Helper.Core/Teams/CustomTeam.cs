@@ -1,14 +1,13 @@
 ﻿namespace MafiaHelper.Core
 {
-    public class CustomTeam : MafiaTeamBase
+    public class CustomTeam : TeamBase
     {
         public override string TeamName { get; }
-        public override DefaultTeamName? DefTeamName { get; }
 
-        public CustomTeam(string teamName, string effect, DefaultTeamName? defName = null) : base(new CustomEffect(effect))
+        public CustomTeam(string teamName, string effect, bool isBlocking) 
+            : base(new CustomEffect(effect, isBlocking))
         {
             TeamName = teamName;
-            DefTeamName = defName;
         }
     }
 }

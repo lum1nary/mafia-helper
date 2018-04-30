@@ -1,5 +1,5 @@
-﻿using MafiaHelper.Core;
-using MafiaHelper.Core.Rules;
+﻿using System.Linq;
+using MafiaHelper.Core;
 using static System.Console;
 
 namespace MafiaHelper.Console
@@ -20,7 +20,7 @@ namespace MafiaHelper.Console
 
             emulator.StartGame();
 
-            IMafiaRoundResult result;
+            IRoundResult result;
 
             do
             {
@@ -38,22 +38,24 @@ namespace MafiaHelper.Console
         {
             Write("Enter players count:");
             var pCount = int.Parse(ReadLine());
+            var teams =  string.Join(", ",emulator.Rules.DefaultTeams.Select(i => $"({i.ToString()})"));
 
             for (int i = 0; i < pCount; i++)
             {
-                WriteLine($"Enter team for player {i + 1}");
+                WriteLine($"Enter team for Player #{i + 1} \t Avaliable teams: {teams}");
                 var card = ReadLine();
                 emulator.AddPlayer(i + 1, card);
             }
         }
 
-        private static IMafiaRoundResult PlayRound(MafiaScenarioEmulator emulator)
+        private static IRoundResult PlayRound(MafiaScenarioEmulator emulator)
         {
             var teamEnumerator = emulator.StartRound();
 
             foreach (var team in teamEnumerator)
             {
-                WriteLine($"Team {team.TeamName} enter your choice:");
+                var otherPlayers = emulator.Game.Players.Except(team.Participants);
+                WriteLine($"{team} enter your choice: \t {string.Join(", " ,otherPlayers.Select(i => i.ToString()))}");
                 var choice = int.Parse(ReadLine());
                 emulator.AddChoice(team, choice);
             }

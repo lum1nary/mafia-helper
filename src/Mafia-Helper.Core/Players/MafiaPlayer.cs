@@ -1,19 +1,18 @@
 ﻿using System;
-using MafiaHelper.Core.EventArgs;
 
-namespace MafiaHelper.Core.Players
+namespace MafiaHelper.Core
 {
     public class MafiaPlayer : IMafiaPlayer
     {
-        public event EventHandler<PlayerVoteEventArgs> Vote;
+        public event EventHandler<IVoteAction> Vote;
 
         public int PlayerNumber { get; }
 
-        public IMafiaTeam Team { get; }
+        public ITeam Team { get; }
 
         public IPlayerState State { get; }
 
-        public MafiaPlayer(int playerNumber, IMafiaTeam team, IPlayerState state)
+        public MafiaPlayer(int playerNumber, ITeam team, IPlayerState state)
         {
             PlayerNumber = playerNumber;
             Team = team;
@@ -22,8 +21,13 @@ namespace MafiaHelper.Core.Players
 
         public void DoVote(IMafiaPlayer other)
         {
-            other.State.ApplyEffect(new VoteEffect());
+            other.State.Apply(new VoteEffect());
             Vote?.Invoke(this, new PlayerVoteEventArgs(this, other));
+        }
+
+        public override string ToString()
+        {
+            return $"Player #{PlayerNumber} ({Team.TeamName})";
         }
     }
 }

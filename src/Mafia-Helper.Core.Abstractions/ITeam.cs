@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using MafiaHelper.Core.EventArgs;
 
 namespace MafiaHelper.Core
 {
-    public interface IMafiaTeam
+    public interface ITeam : IRefreshable
     {
-        event EventHandler<PlayerChooseEventArgs> Choise;
+        event EventHandler<IChooseAction> Choice;
 
         int Priority { get; set; }
 
+        bool IsCanChoose { get; }
+
         string TeamName { get; }
 
-        DefaultTeamName? DefTeamName { get; }
-
-        IReadOnlyList<IMafiaPlayer> Participants { get; }
+        PlayerCollection Participants { get; }
 
         IActionEffect Effect { get; }
 
         void Initialize(IEnumerable<IMafiaPlayer> participants);
 
         void DoChoose(IMafiaPlayer player);
+
+        void RemoveExcluded(IMafiaPlayer participant);
     }
 }

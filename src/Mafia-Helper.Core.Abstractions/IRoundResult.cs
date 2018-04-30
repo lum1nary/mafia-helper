@@ -1,11 +1,11 @@
 ﻿namespace MafiaHelper.Core
 {
-    public interface IMafiaRoundResult
+    public interface IRoundResult
     {
         bool IsGameComplete { get; }
 
         string WinTeamName { get; }
 
-        IMafiaRound CompletedRound { get; }
+        IRound CompletedRound { get; }
     }
 }

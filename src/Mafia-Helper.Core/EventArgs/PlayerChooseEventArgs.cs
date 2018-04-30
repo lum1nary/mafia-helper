@@ -1,20 +1,22 @@
-﻿namespace MafiaHelper.Core.EventArgs
+﻿using System;
+
+namespace MafiaHelper.Core
 {
-    public class PlayerChooseEventArgs : System.EventArgs
+    public class PlayerChooseEventArgs : EventArgs, IChooseAction
     {
-        public PlayerChooseEventArgs(IMafiaTeam team, IMafiaPlayer targetPlayer)
+        public PlayerChooseEventArgs(ITeam team, IMafiaPlayer targetPlayer)
         {
             Team = team;
             TargetPlayer = targetPlayer;
         }
 
-        public IMafiaTeam Team { get; }
+        public ITeam Team { get; }
 
         public IMafiaPlayer TargetPlayer { get; }
 
         public override string ToString()
         {
-            return $"{Team.TeamName} {Team.Effect.EffectName} Player {TargetPlayer.PlayerNumber}";
+            return $"[{Team.TeamName}] {Team.Effect.EffectName} => [{TargetPlayer}]";
         }
     }
 }

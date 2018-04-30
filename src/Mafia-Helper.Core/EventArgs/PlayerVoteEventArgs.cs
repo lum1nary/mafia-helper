@@ -1,6 +1,6 @@
-﻿namespace MafiaHelper.Core.EventArgs
+﻿namespace MafiaHelper.Core
 {
-    public class PlayerVoteEventArgs : System.EventArgs
+    public class PlayerVoteEventArgs : System.EventArgs, IVoteAction
     {
         public IMafiaPlayer SourcePlayer { get; }
 

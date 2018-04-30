@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using MafiaHelper.Core.Rules;
 
 namespace MafiaHelper.Core
 {
@@ -9,13 +8,15 @@ namespace MafiaHelper.Core
 
         string RulesType { get; }
 
-        IMafiaRoundResult GetCurrentResult(IMafiaGame game);
+        IRoundResult GetCurrentResult(IMafiaGame game);
 
         bool IsPlayerCanContinue(IMafiaGame game, IMafiaPlayer player);
 
         void Apply(IMafiaGame game);
 
-        IReadOnlyList<DefaultTeamName> DefaultTeams { get; }
+        IEffectProcessor EffectProcessor { get; }
+
+        IReadOnlyList<string> DefaultTeams { get; }
 
         IReadOnlyList<CustomTeamDecription> CustomTeams { get; }
     }

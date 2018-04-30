@@ -1,10 +1,8 @@
-﻿using MafiaHelper.Core.Effects;
-
-namespace MafiaHelper.Core
+﻿namespace MafiaHelper.Core
 {
-    public class WhoreTeam : MafiaTeamBase
+    public class WhoreTeam : TeamBase
     {
-        public override DefaultTeamName? DefTeamName => DefaultTeamName.Whore;
+        public override string TeamName => TeamNameConstants.Whore;
 
         public WhoreTeam() : base(new FuckEffect())
         {

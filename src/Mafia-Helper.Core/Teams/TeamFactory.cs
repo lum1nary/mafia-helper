@@ -5,23 +5,22 @@ namespace MafiaHelper.Core
 {
     public class TeamFactory : ITeamFactory
     {
-        private static readonly IDictionary<DefaultTeamName, Func<IMafiaTeam>> Defaults = new Dictionary<DefaultTeamName, Func<IMafiaTeam>>()
+        private static readonly IDictionary<string, Func<ITeam>> Defaults = new Dictionary<string, Func<ITeam>>()
         {
-            {DefaultTeamName.Mafia, () => new MafiaTeam() },
-            {DefaultTeamName.Civilian, () => new CivilianTeam() },
-            {DefaultTeamName.Doctor, () => new DoctorTeam() },
-            {DefaultTeamName.Whore, () => new WhoreTeam() }
+            {TeamNameConstants.Mafia, () => new MafiaTeam() },
+            {TeamNameConstants.Civilian, () => new CivilianTeam() },
+            {TeamNameConstants.Doctor, () => new DoctorTeam() },
+            {TeamNameConstants.Whore, () => new WhoreTeam() }
         };
 
-        public IMafiaTeam Create(DefaultTeamName defaultTeamName)
+        public ITeam Create(string defaultTeamName)
         {
             return Defaults[defaultTeamName]();
         }
 
-        public IMafiaTeam Create(string name, string effectName)
+        public ITeam Create(string name, string effectName, bool isEffectBlocking)
         {
-            //todo try parse effect name as default
-            return new CustomTeam(name, effectName);
+            return new CustomTeam(name, effectName, isEffectBlocking);
         }
     }
 }

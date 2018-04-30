@@ -1,9 +1,7 @@
-﻿namespace MafiaHelper.Core.Effects
+﻿namespace MafiaHelper.Core
 {
     public class HealEffect : ActionEffectBase
     {
-        public HealEffect() : base(ActionEffectName.Healed.ToString())
-        {
-        }
+        public override string EffectName => ActionEffectConstants.Healed;
     }
 }

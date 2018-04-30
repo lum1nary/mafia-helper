@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MafiaHelper.Core.Exceptions;
-using MafiaHelper.Core.Game;
-using MafiaHelper.Core.Players;
 
 namespace MafiaHelper.Core
 {
@@ -13,7 +11,7 @@ namespace MafiaHelper.Core
         private IMafiaRules _rules;
         private readonly IList<IMafiaPlayer> _players = new List<IMafiaPlayer>();
 
-        private readonly IDictionary<string, IMafiaTeam> _createdTeams = new Dictionary<string, IMafiaTeam>();
+        private readonly IDictionary<string, ITeam> _createdTeams = new Dictionary<string, ITeam>();
 
         public MafiaGameBuilder(ITeamFactory teamFactory)
         {
@@ -30,12 +28,16 @@ namespace MafiaHelper.Core
             _rules = rules;
             foreach (var defName in _rules.DefaultTeams)
             {
-                _createdTeams.Add(defName.ToString().ToLower(), _teamFactory.Create(defName));
+                _createdTeams.Add(defName.ToLower(), _teamFactory.Create(defName));
             }
 
             foreach (var teamDescription in _rules.CustomTeams)
             {
-                _createdTeams.Add(teamDescription.TeamName.ToLower(), _teamFactory.Create(teamDescription.TeamName, teamDescription.EffectName));
+                _createdTeams.Add(teamDescription.TeamName.ToLower(), 
+                    _teamFactory.Create(
+                        teamDescription.TeamName, 
+                        teamDescription.EffectName, 
+                        teamDescription.IsBlockingEffect));
             }
         }
 

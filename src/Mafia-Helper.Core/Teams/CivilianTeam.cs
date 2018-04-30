@@ -1,10 +1,8 @@
-﻿using MafiaHelper.Core.Effects;
-
-namespace MafiaHelper.Core
+﻿namespace MafiaHelper.Core
 {
-    public class CivilianTeam : MafiaTeamBase
+    public class CivilianTeam : TeamBase
     {
-        public override DefaultTeamName? DefTeamName => DefaultTeamName.Civilian;
+        public override string TeamName => TeamNameConstants.Civilian;
 
         public CivilianTeam() : base(new NullEffect())
         {

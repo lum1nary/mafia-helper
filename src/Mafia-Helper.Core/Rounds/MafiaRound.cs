@@ -1,20 +1,25 @@
 ﻿using System.Collections.Generic;
-using MafiaHelper.Core.EventArgs;
 
 namespace MafiaHelper.Core
 {
-    public class MafiaRound : IMafiaRound
+    public class MafiaRound : IRound
     {
-        public IReadOnlyList<PlayerChooseEventArgs> Actions { get; }
-        public IReadOnlyList<PlayerVoteEventArgs> Votes { get; }
-
         public int RoundNumber { get; }
 
-        public MafiaRound(int roundNumber, IEnumerable<PlayerChooseEventArgs> actions, IEnumerable<PlayerVoteEventArgs> votes)
+        public IReadOnlyList<IChooseAction> Actions { get; }
+        public IReadOnlyList<IVoteAction> Votes { get; }
+        public IReadOnlyList<INeutralizeAction> NeutralizedEffects { get; }
+
+        public MafiaRound(
+            int roundNumber,
+            IEnumerable<IChooseAction> actions,
+            IEnumerable<IVoteAction> votes,
+            IEnumerable<INeutralizeAction> neutralizedEffects)
         {
             RoundNumber = roundNumber;
-            Actions = new List<PlayerChooseEventArgs>(actions);
-            Votes = new List<PlayerVoteEventArgs>(votes);
+            Actions = new List<IChooseAction>(actions);
+            Votes = new List<IVoteAction>(votes);
+            NeutralizedEffects = new List<INeutralizeAction>(neutralizedEffects);
         }
     }
 }
