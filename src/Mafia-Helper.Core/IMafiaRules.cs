@@ -1,11 +1,22 @@
-﻿namespace MafiaHelper.Core
+﻿using System.Collections.Generic;
+using MafiaHelper.Core.Rules;
+
+namespace MafiaHelper.Core
 {
     public interface IMafiaRules
     {
-        bool IsGameComplete(IMafiaGame game);
+        int MinimumPlayerCount { get; }
 
-        bool IsPlayerCanContinue(IMafiaPlayer player);
+        string RulesType { get; }
 
-        void Initialize(IMafiaGame game);
+        IMafiaRoundResult GetCurrentResult(IMafiaGame game);
+
+        bool IsPlayerCanContinue(IMafiaGame game, IMafiaPlayer player);
+
+        void Apply(IMafiaGame game);
+
+        IReadOnlyList<DefaultTeamName> DefaultTeams { get; }
+
+        IReadOnlyList<CustomTeamDecription> CustomTeams { get; }
     }
 }

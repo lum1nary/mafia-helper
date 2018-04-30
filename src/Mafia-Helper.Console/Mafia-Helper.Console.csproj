@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MafiaHelper.Core\MafiaHelper.Core.csproj" />
+    <ProjectReference Include="..\Mafia-Helper.Core\Mafia-Helper.Core.csproj" />
   </ItemGroup>
 
 </Project>

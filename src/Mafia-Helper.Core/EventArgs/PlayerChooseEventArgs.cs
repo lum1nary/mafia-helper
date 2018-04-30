@@ -2,20 +2,19 @@
 {
     public class PlayerChooseEventArgs : System.EventArgs
     {
-        public PlayerChooseEventArgs(IMafiaPlayer sourcePlayer, IMafiaPlayer targetPlayer)
+        public PlayerChooseEventArgs(IMafiaTeam team, IMafiaPlayer targetPlayer)
         {
-            SourcePlayer = sourcePlayer;
+            Team = team;
             TargetPlayer = targetPlayer;
         }
 
-        public IMafiaPlayer SourcePlayer { get; }
+        public IMafiaTeam Team { get; }
 
         public IMafiaPlayer TargetPlayer { get; }
 
         public override string ToString()
         {
-            return $"Player {SourcePlayer.PlayerNumber} as {SourcePlayer.Card.CardName} " +
-                   $"{SourcePlayer.Card.Effect.EffectName} Player {TargetPlayer.PlayerNumber}";
+            return $"{Team.TeamName} {Team.Effect.EffectName} Player {TargetPlayer.PlayerNumber}";
         }
     }
 }

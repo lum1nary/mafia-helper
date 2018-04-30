@@ -4,6 +4,8 @@
     {
         bool IsGameComplete { get; }
 
+        string WinTeamName { get; }
+
         IMafiaRound CompletedRound { get; }
     }
 }

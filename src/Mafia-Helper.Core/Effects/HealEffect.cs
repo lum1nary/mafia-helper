@@ -1,7 +1,9 @@
 ﻿namespace MafiaHelper.Core.Effects
 {
-    public class HealEffect : IMafiaCardEffect
+    public class HealEffect : ActionEffectBase
     {
-        public string EffectName => "Healed";
+        public HealEffect() : base(ActionEffectName.Healed.ToString())
+        {
+        }
     }
 }

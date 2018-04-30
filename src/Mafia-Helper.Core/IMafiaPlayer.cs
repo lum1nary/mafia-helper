@@ -5,17 +5,14 @@ namespace MafiaHelper.Core
 {
     public interface IMafiaPlayer
     {
-        event EventHandler<PlayerChooseEventArgs> Chose;
-        event EventHandler<PlayerChooseEventArgs> Vote;
+        event EventHandler<PlayerVoteEventArgs> Vote;
 
         int PlayerNumber { get; }
 
-        IMafiaCard Card { get; }
+        IMafiaTeam Team { get; }
 
         IPlayerState State { get; }
 
         void DoVote(IMafiaPlayer other);
-
-        void DoChoose(IMafiaPlayer other);
     }
 }

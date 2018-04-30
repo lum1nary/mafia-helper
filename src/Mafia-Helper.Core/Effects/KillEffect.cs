@@ -1,7 +1,9 @@
 ﻿namespace MafiaHelper.Core.Effects
 {
-    public class KillEffect : IMafiaCardEffect
+    public class KillEffect : ActionEffectBase
     {
-        public string EffectName => "Killed";
+        public KillEffect() : base(ActionEffectName.Killed.ToString())
+        {
+        }
     }
 }

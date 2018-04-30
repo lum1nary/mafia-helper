@@ -9,6 +9,6 @@ namespace MafiaHelper.Core
 
         IReadOnlyList<PlayerChooseEventArgs> Actions { get; }
 
-        void AddPlayerAction(PlayerChooseEventArgs args);
+        IReadOnlyList<PlayerVoteEventArgs> Votes { get; }
     }
 }

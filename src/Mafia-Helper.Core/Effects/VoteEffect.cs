@@ -1,7 +1,9 @@
-﻿namespace MafiaHelper.Core.Effects
+﻿namespace MafiaHelper.Core
 {
-    public class VoteEffect : IMafiaCardEffect
+    public class VoteEffect : ActionEffectBase
     {
-        public string EffectName => "Voted";
+        public VoteEffect() : base(ActionEffectName.Voted.ToString())
+        {
+        }
     }
 }

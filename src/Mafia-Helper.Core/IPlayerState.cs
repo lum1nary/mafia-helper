@@ -4,8 +4,10 @@ namespace MafiaHelper.Core
 {
     public interface IPlayerState
     {
-        IReadOnlyList<IMafiaCardEffect> Effects { get; }
+        IReadOnlyList<IActionEffect> Effects { get; }
 
-        void ApplyEffect(IMafiaCardEffect effect);
+        void ApplyEffect(IActionEffect effect);
+
+        void Refresh();
     }
 }

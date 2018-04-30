@@ -1,7 +1,9 @@
-﻿namespace MafiaHelper.Core.Effects
+﻿namespace MafiaHelper.Core
 {
-    public class FuckEffect : IMafiaCardEffect
+    public class FuckEffect : ActionEffectBase
     {
-        public string EffectName => "Fucked";
+        public FuckEffect() : base(ActionEffectName.Fucked.ToString())
+        {
+        }
     }
 }
