@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MafiaHelper.Console", "MafiaHelper.Console\MafiaHelper.Console.csproj", "{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MafiaHelper.Core", "MafiaHelper.Core\MafiaHelper.Core.csproj", "{F62F9711-D425-4893-8F79-7754DF4948FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MafiaHelper.Core.Abstractions", "MafiaHelper.Core.Abstractions\MafiaHelper.Core.Abstractions.csproj", "{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MafiaHelper.Android", "MafiaHelper.Android\MafiaHelper.Android.csproj", "{6257C654-FF0A-4FE4-9080-D8AB398465BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MafiaHelper.Classic", "MafiaHelper.Classic\MafiaHelper.Classic.csproj", "{A811C135-B500-4E6C-BDAF-F21A0F1D0111}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD09DB56-762C-4FF8-A6A5-22ED0F254F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62F9711-D425-4893-8F79-7754DF4948FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE0265D-5BD2-4EA3-B082-0D41E10E436E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6257C654-FF0A-4FE4-9080-D8AB398465BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6257C654-FF0A-4FE4-9080-D8AB398465BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6257C654-FF0A-4FE4-9080-D8AB398465BB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6257C654-FF0A-4FE4-9080-D8AB398465BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6257C654-FF0A-4FE4-9080-D8AB398465BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6257C654-FF0A-4FE4-9080-D8AB398465BB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A811C135-B500-4E6C-BDAF-F21A0F1D0111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A811C135-B500-4E6C-BDAF-F21A0F1D0111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A811C135-B500-4E6C-BDAF-F21A0F1D0111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A811C135-B500-4E6C-BDAF-F21A0F1D0111}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5195AF86-91D5-49BD-8967-E37B7282EA09}
+	EndGlobalSection
+EndGlobal
